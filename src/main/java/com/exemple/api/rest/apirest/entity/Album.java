@@ -15,9 +15,6 @@ public class Album {
     @JoinColumn(name = "artista_id")
     private Artista artista;
 
-    public String getTitulo() {
-        return titulo;
-    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
