@@ -3,6 +3,9 @@ api-rest.iml
 gradlew
 settings.gradle
 gradlew.bat
+build.gradle
+.gitattributes
+.gitignore
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar

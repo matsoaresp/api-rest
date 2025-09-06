@@ -1,28 +1,26 @@
 package com.exemple.api.rest.apirest.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class musicas {
+public class Musica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String artista;
+
+
     String nome;
     String genero;
     int anoLancamento;
 
-    public String getArtista() {
-        return artista;
-    }
+    @ManyToOne
+    @JoinColumn(name = "artista_id")
+    private Artista artista;
 
-    public void setArtista(String artista) {
-        this.artista = artista;
-    }
+    @ManyToOne
+    @JoinColumn(name = "album_id")
+    private Album album;
 
     public String getGenero() {
         return genero;
@@ -48,14 +46,21 @@ public class musicas {
         this.anoLancamento = anoLancamento;
     }
 
-
-
-
     public void setId(Long id) {
         this.id = id;
     }
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "musica{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", genero='" + genero + '\'' +
+                ", anoLancamento=" + anoLancamento +
+                '}';
     }
 }
