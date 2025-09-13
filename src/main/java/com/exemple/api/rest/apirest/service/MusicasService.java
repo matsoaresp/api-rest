@@ -12,19 +12,19 @@ public class MusicasService {
     @Autowired
     private MusicasRepository musicasRepository;
 
-    public Musica save(Musica musica) throws Exception {
+    public Musica save(Musica musica){
         return musicasRepository.save(musica);
     }
 
-    public List<Musica> findAll() {
+    public List<Musica> findAll(){
         return musicasRepository.findAll();
     }
 
-    public Musica findById(Long id) {
+    public Musica findById(Long id){
         return musicasRepository.findById(id).orElse(null);
     }
 
-    public void delete(Long id) {
+    public void delete(Long id){
         musicasRepository.deleteById(id);
     }
 }
