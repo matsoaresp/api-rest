@@ -1,7 +1,9 @@
 package com.exemple.api.rest.apirest.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.exemple.api.rest.apirest.entity.Album;
+import com.exemple.api.rest.apirest.entity.Musica;
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -13,13 +15,12 @@ public class Artista {
 
     private String nome;
 
-    @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "artista")
     private List<Album> albuns;
 
-    @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "artista")
     private List<Musica> musicas;
+
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
