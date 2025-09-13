@@ -1,4 +1,5 @@
 package com.exemple.api.rest.apirest.entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,9 +20,11 @@ public class Artista {
 
     String nome;
     @OneToMany(mappedBy = "artista")
+    @JsonManagedReference("artista-album")
     private List<Album> albuns;
 
     @OneToMany(mappedBy = "artista")
+    @JsonManagedReference("artista-musica")
     private List<Musica> musicas;
 
     @Override

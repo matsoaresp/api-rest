@@ -4,6 +4,7 @@ gradlew
 settings.gradle
 gradlew.bat
 build.gradle
+application.properties
 .gitattributes
 .gitignore
 .gradle

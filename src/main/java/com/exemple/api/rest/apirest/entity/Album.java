@@ -1,5 +1,6 @@
 package com.exemple.api.rest.apirest.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Album {
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
+    @JsonBackReference("artista-album")
     private Artista artista;
 
     @Override
