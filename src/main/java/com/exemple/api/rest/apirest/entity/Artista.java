@@ -1,6 +1,10 @@
 package com.exemple.api.rest.apirest.entity;
-import java.util.List;
+
+import com.exemple.api.rest.apirest.entity.Album;
+import com.exemple.api.rest.apirest.entity.Musica;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Artista {
@@ -9,7 +13,8 @@ public class Artista {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String nome;
+    private String nome;
+
     @OneToMany(mappedBy = "artista")
     private List<Album> albuns;
 
@@ -17,25 +22,21 @@ public class Artista {
     private List<Musica> musicas;
 
 
-    public String getNome() {
-        return nome;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public List<Album> getAlbuns() { return albuns; }
+    public void setAlbuns(List<Album> albuns) { this.albuns = albuns; }
 
-    public Long getId() {
-        return id;
-    }
+    public List<Musica> getMusicas() { return musicas; }
+    public void setMusicas(List<Musica> musicas) { this.musicas = musicas; }
 
     @Override
     public String toString() {
-        return "artista{" +
+        return "Artista{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';
