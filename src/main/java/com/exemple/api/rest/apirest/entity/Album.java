@@ -1,11 +1,13 @@
 package com.exemple.api.rest.apirest.entity;
 
-import com.exemple.api.rest.apirest.entity.Artista;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
-
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Album {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,8 +17,8 @@ public class Album {
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
+    @JsonBackReference("albuns-artista")
     private Artista artista;
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
