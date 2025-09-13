@@ -25,7 +25,9 @@ public class AlbumService {
         return albumRepository.findById(id).orElse(null);
     }
     public void delete(Long id) {
-        albumRepository.deleteById(id);
+        if (albumRepository.existsById(id)) {
+            albumRepository.deleteById(id);
+        }
     }
 
 

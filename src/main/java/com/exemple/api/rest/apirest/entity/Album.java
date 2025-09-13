@@ -1,8 +1,16 @@
 package com.exemple.api.rest.apirest.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,27 +22,6 @@ public class Album {
     @ManyToOne
     @JoinColumn(name = "artista_id")
     private Artista artista;
-
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public int getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(int anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     @Override
     public String toString() {

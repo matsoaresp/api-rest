@@ -31,6 +31,9 @@ public class ArtistaController {
     @GetMapping("/{id}")
     public ResponseEntity<Artista> getArtistaById(@PathVariable long id) {
         Artista artista = artistaService.findById(id);
+        if (artista == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(artista);
     }
 

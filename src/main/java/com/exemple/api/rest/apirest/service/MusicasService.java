@@ -25,6 +25,8 @@ public class MusicasService {
     }
 
     public void delete(Long id){
-        musicasRepository.deleteById(id);
+        if (musicasRepository.existsById(id)) {
+            musicasRepository.deleteById(id);
+        }
     }
 }

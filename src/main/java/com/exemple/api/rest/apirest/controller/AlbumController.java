@@ -30,6 +30,9 @@ public class AlbumController {
     @GetMapping("/{id}")
     public ResponseEntity<Album> getAlbumById(@PathVariable long id) {
         Album album = albumService.findById(id);
+        if (album == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(album);
     }
 

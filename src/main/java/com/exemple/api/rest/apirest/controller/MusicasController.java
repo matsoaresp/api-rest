@@ -18,7 +18,7 @@ public class MusicasController {
     private MusicasService musicasService;
 
     @PostMapping("/criarMusica")
-    public ResponseEntity<Musica> createArtista(@RequestBody Musica musica) {
+    public ResponseEntity<Musica> createMusica(@RequestBody Musica musica) {
         Musica createdMusica = musicasService.save(musica);
         return ResponseEntity.ok(createdMusica);
     }
@@ -30,8 +30,11 @@ public class MusicasController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Musica> getArtistaById(@PathVariable long id) {
+    public ResponseEntity<Musica> getMusicaById(@PathVariable long id) {
         Musica musica = musicasService.findById(id);
+        if (musica == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(musica);
     }
 
