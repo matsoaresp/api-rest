@@ -1,4 +1,6 @@
 package com.exemple.api.rest.apirest.entity;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,16 +12,17 @@ public class Musica {
 
     private String nome;
     private String genero;
-    private Integer anoLancamento; // usar Integer para permitir null
+    private Integer anoLancamento;
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
+    @JsonBackReference
     private Artista artista;
 
     @ManyToOne
     @JoinColumn(name = "album_id")
+    @JsonBackReference
     private Album album;
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
