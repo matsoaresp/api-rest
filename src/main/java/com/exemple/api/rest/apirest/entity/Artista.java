@@ -1,42 +1,32 @@
 package com.exemple.api.rest.apirest.entity;
-
-import com.exemple.api.rest.apirest.entity.Album;
-import com.exemple.api.rest.apirest.entity.Musica;
-import jakarta.persistence.*;
-
 import java.util.List;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Artista {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-
+    String nome;
     @OneToMany(mappedBy = "artista")
     private List<Album> albuns;
 
     @OneToMany(mappedBy = "artista")
     private List<Musica> musicas;
 
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
-    public List<Album> getAlbuns() { return albuns; }
-    public void setAlbuns(List<Album> albuns) { this.albuns = albuns; }
-
-    public List<Musica> getMusicas() { return musicas; }
-    public void setMusicas(List<Musica> musicas) { this.musicas = musicas; }
-
     @Override
     public String toString() {
-        return "Artista{" +
+        return "artista{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';

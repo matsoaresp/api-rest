@@ -1,0 +1,4 @@
+CREATE TABLE artista (
+    id INTEGER PRIMARY KEY UNIQUE NOT NULL,
+    nome VARCHAR(255)
+);

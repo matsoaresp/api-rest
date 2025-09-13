@@ -26,6 +26,8 @@ public class ArtistaService {
         return artistaRepository.findById(id).orElse(null);
     }
     public void delete(Long id){
-        artistaRepository.deleteById(id);
+        if (artistaRepository.existsById(id)) {
+            artistaRepository.deleteById(id);
+        }
     }
 }

@@ -1,42 +1,34 @@
 package com.exemple.api.rest.apirest.entity;
 
-import com.exemple.api.rest.apirest.entity.Artista;
 import jakarta.persistence.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titulo;
-    private Integer anoLancamento;
+    String titulo;
+    int anoLancamento;
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
     private Artista artista;
 
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
-
-    public Integer getAnoLancamento() { return anoLancamento; }
-    public void setAnoLancamento(Integer anoLancamento) { this.anoLancamento = anoLancamento; }
-
-    public Artista getArtista() { return artista; }
-    public void setArtista(Artista artista) { this.artista = artista; }
-
     @Override
     public String toString() {
-        return "Album{" +
+        return "album{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", anoLancamento=" + anoLancamento +
-                ", artista=" + (artista != null ? artista.getNome() : null) +
                 '}';
     }
 }
