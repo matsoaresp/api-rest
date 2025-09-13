@@ -1,7 +1,11 @@
 package com.exemple.api.rest.apirest.entity;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Musica {
 
     @Id
@@ -10,16 +14,16 @@ public class Musica {
 
     private String nome;
     private String genero;
-    private Integer anoLancamento; // usar Integer para permitir null
+    private Integer anoLancamento;
 
     @ManyToOne
     @JoinColumn(name = "artista_id")
+    @JsonBackReference("musicas-artista")
     private Artista artista;
 
     @ManyToOne
     @JoinColumn(name = "album_id")
-    private Album album;
-
+    private Album album; // Se quiser evitar loop, pode ignorar album na serialização também
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

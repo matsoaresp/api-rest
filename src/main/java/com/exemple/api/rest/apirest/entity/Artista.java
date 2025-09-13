@@ -1,11 +1,13 @@
 package com.exemple.api.rest.apirest.entity;
 
-import com.exemple.api.rest.apirest.entity.Album;
-import com.exemple.api.rest.apirest.entity.Musica;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.List;
 
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 public class Artista {
 
@@ -16,11 +18,12 @@ public class Artista {
     private String nome;
 
     @OneToMany(mappedBy = "artista")
+    @JsonManagedReference("albuns-artista")
     private List<Album> albuns;
 
     @OneToMany(mappedBy = "artista")
+    @JsonManagedReference("musicas-artista")
     private List<Musica> musicas;
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
